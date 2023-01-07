@@ -11,7 +11,7 @@ import java.util.stream.IntStream;
 
 public class Main {
 
-    public static void main(String ... args) {
+    public static void main(final String ... args) {
         final List<Matcher> matchers = List.of(
             FizzFactory.create(),
             BuzzFactory.create()

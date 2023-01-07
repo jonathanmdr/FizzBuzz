@@ -1,6 +1,6 @@
 package br.com.fizzbuzz.matcher;
 
-public abstract class Matcher {
+public class Matcher {
 
     private final int divisor;
     private final String matchValue;

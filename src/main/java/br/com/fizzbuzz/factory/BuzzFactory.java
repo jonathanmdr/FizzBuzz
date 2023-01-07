@@ -1,6 +1,5 @@
 package br.com.fizzbuzz.factory;
 
-import br.com.fizzbuzz.matcher.BuzzMatcher;
 import br.com.fizzbuzz.matcher.Matcher;
 
 public final class BuzzFactory {
@@ -13,7 +12,7 @@ public final class BuzzFactory {
     }
 
     public static Matcher create() {
-        return new BuzzMatcher(BUZZ_DIVISOR_VALUE, BUZZ_MATCH_VALUE);
+        return new Matcher(BUZZ_DIVISOR_VALUE, BUZZ_MATCH_VALUE);
     }
 
 }
