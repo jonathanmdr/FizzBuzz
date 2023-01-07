@@ -1,9 +1,17 @@
 package br.com.fizzbuzz.matcher;
 
-public interface Matcher {
+public abstract class Matcher {
 
-    boolean isDivisorOf(int value);
+    private final int divisor;
+    private final String matchValue;
 
-    String getMatchValue();
+    public Matcher(final int divisor, final String matchValue) {
+        this.divisor = divisor;
+        this.matchValue = matchValue;
+    }
+
+    public String evaluate(final int value) {
+        return value % divisor == 0 ? matchValue : "";
+    }
 
 }

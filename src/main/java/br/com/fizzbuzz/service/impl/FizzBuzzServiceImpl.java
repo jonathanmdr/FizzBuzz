@@ -9,21 +9,15 @@ public class FizzBuzzServiceImpl implements FizzBuzzService {
 
     private final List<Matcher> matchers;
 
-    public FizzBuzzServiceImpl(List<Matcher> matchers) {
+    public FizzBuzzServiceImpl(final List<Matcher> matchers) {
         this.matchers = matchers;
     }
 
     @Override
-    public String processNumber(int value) {
-        String result = "";
-
-        for (Matcher matcher : matchers) {
-            if (matcher.isDivisorOf(value)) {
-                result += matcher.getMatchValue();
-            }
-        }
-
-        return result.isEmpty() ? String.valueOf(value) : result;
+    public String process(int value) {
+        final StringBuilder result = new StringBuilder();
+        matchers.forEach(matcher -> result.append(matcher.evaluate(value)));
+        return (result.length() == 0) ? String.valueOf(value) : result.toString();
     }
 
 }

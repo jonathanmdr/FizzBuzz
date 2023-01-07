@@ -1,11 +1,10 @@
 package br.com.fizzbuzz.matcher;
 
-import br.com.fizzbuzz.matcher.impl.FizzMatcher;
-import org.junit.Assert;
+import br.com.fizzbuzz.factory.FizzFactory;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertEquals;
 
 public class FizzMatcherTest {
 
@@ -13,22 +12,17 @@ public class FizzMatcherTest {
 
     @Before
     public void setup() {
-        this.matcher = new FizzMatcher();
+        this.matcher = FizzFactory.create();
     }
 
     @Test
-    public void isDivisorOfThreeReturningTrue() {
-        Assert.assertTrue(matcher.isDivisorOf(3));
+    public void isDivisorOfThreeReturningFizz() {
+        assertEquals("Fizz", matcher.evaluate(3));
     }
 
     @Test
-    public void isDivisorOfThreeReturningFalse() {
-        Assert.assertFalse(matcher.isDivisorOf(5));
-    }
-
-    @Test
-    public void getMatchValueEqualsToFizz() {
-        Assert.assertThat(matcher.getMatchValue(), is("Fizz"));
+    public void isDivisorOfThreeReturningEmpty() {
+        assertEquals("", matcher.evaluate(5));
     }
 
 }
