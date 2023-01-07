@@ -15,9 +15,11 @@ public class FizzBuzzServiceImpl implements FizzBuzzService {
 
     @Override
     public String process(int value) {
-        final StringBuilder result = new StringBuilder();
-        matchers.forEach(matcher -> result.append(matcher.evaluate(value)));
-        return (result.length() == 0) ? String.valueOf(value) : result.toString();
+        final String result = matchers.stream()
+            .map(matcher -> matcher.evaluate(value))
+            .reduce("", String::concat);
+
+        return result.length() == 0 ? String.valueOf(value) : result;
     }
 
 }
