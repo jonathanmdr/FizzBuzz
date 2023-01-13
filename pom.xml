@@ -11,7 +11,11 @@
     <properties>
         <java.version>11</java.version>
         <junit.version>4.13.2</junit.version>
-        <jacoco.version>0.8.8</jacoco.version>
+        <encoding.type>UTF-8</encoding.type>
+        <project.build.sourceEncoding>${encoding.type}</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>${encoding.type}</project.reporting.outputEncoding>
+        <maven-compiler-plugin.version>3.10.1</maven-compiler-plugin.version>
+        <jacoco-plugin.version>0.8.8</jacoco-plugin.version>
     </properties>
 
     <dependencies>
@@ -28,6 +32,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
                 <configuration>
                     <source>${java.version}</source>
                     <target>${java.version}</target>
@@ -36,7 +41,7 @@
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
-                <version>${jacoco.version}</version>
+                <version>${jacoco-plugin.version}</version>
                 <configuration>
                     <excludes>
                         <exclude>**/*Main.*</exclude>
