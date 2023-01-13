@@ -1,6 +1,5 @@
 package br.com.fizzbuzz.matcher;
 
-import br.com.fizzbuzz.factory.FizzFactory;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -12,7 +11,10 @@ public class FizzMatcherTest {
 
     @Before
     public void setup() {
-        this.matcher = FizzFactory.create();
+        this.matcher = MatcherBuilder.builder()
+            .withDivisorValue(3)
+            .withMatchValue("Fizz")
+            .build();
     }
 
     @Test

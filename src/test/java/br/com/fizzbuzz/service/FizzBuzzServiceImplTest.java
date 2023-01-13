@@ -1,7 +1,6 @@
 package br.com.fizzbuzz.service;
 
-import br.com.fizzbuzz.factory.BuzzFactory;
-import br.com.fizzbuzz.factory.FizzFactory;
+import br.com.fizzbuzz.matcher.MatcherBuilder;
 import br.com.fizzbuzz.matcher.Matcher;
 import br.com.fizzbuzz.service.impl.FizzBuzzServiceImpl;
 import org.junit.Before;
@@ -17,12 +16,17 @@ public class FizzBuzzServiceImplTest {
 
     @Before
     public void setup() {
-        final List<Matcher> matchers = List.of(
-            FizzFactory.create(),
-            BuzzFactory.create()
-        );
+        final Matcher fizzMatcher = MatcherBuilder.builder()
+            .withDivisorValue(3)
+            .withMatchValue("Fizz")
+            .build();
 
-        this.fizzBuzzService = new FizzBuzzServiceImpl(matchers);
+        final Matcher buzzMatcher = MatcherBuilder.builder()
+            .withDivisorValue(5)
+            .withMatchValue("Buzz")
+            .build();
+
+        this.fizzBuzzService = new FizzBuzzServiceImpl(List.of(fizzMatcher, buzzMatcher));
     }
 
     @Test
