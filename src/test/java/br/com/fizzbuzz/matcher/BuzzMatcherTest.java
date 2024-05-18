@@ -1,30 +1,27 @@
 package br.com.fizzbuzz.matcher;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class BuzzMatcherTest {
+class BuzzMatcherTest {
 
     private Matcher matcher;
 
-    @Before
-    public void setup() {
-        this.matcher = MatcherBuilder.builder()
-            .withDivisorValue(5)
-            .withMatchValue("Buzz")
-            .build();
+    @BeforeEach
+    void setup() {
+        this.matcher = Matcher.buzz(5);
     }
 
     @Test
-    public void isDivisorOfFiveReturningBuzz() {
-        assertEquals("Buzz", matcher.evaluate(5));
+    void isDivisorOfFiveReturningBuzz() {
+        assertEquals("Buzz", matcher.apply(5));
     }
 
     @Test
-    public void isDivisorOfFiveReturningEmpty() {
-        assertEquals("", matcher.evaluate(3));
+    void isDivisorOfFiveReturningEmpty() {
+        assertEquals("", matcher.apply(3));
     }
 
 }

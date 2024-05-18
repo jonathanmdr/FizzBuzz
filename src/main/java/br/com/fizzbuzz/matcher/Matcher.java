@@ -1,17 +1,23 @@
 package br.com.fizzbuzz.matcher;
 
-public class Matcher {
+import java.util.function.IntFunction;
 
-    private final int divisor;
-    private final String matchValue;
+public record Matcher(
+    int divisor,
+    String matchValue
+) implements IntFunction<String> {
 
-    public Matcher(final int divisor, final String matchValue) {
-        this.divisor = divisor;
-        this.matchValue = matchValue;
+    public static Matcher fizz(final int divisor) {
+        return new Matcher(divisor, "Fizz");
     }
 
-    public String evaluate(final int value) {
-        return value % divisor == 0 ? matchValue : "";
+    public static Matcher buzz(final int divisor) {
+        return new Matcher(divisor, "Buzz");
+    }
+
+    @Override
+    public String apply(final int value) {
+        return value % this.divisor == 0 ? this.matchValue : "";
     }
 
 }
